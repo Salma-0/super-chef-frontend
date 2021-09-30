@@ -1,0 +1,54 @@
+.contact {
+    margin: 10% auto;
+    width: 50%;
+}
+
+.contact h3 {
+    font-size: 24px;
+    color: #655989;
+    font-weight: 400;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+}
+
+
+.contact form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.contact form input {
+    height: 40px;
+    width: 100%;
+    padding: 5px 10px;
+    font-size: 16px;
+    border: 0.5px solid #7a7a7a;
+}
+
+.contact form textarea {
+    padding: 5px 10px;
+    font-size: 16px;
+}
+
+.contact form input::placeholder , .contact form textarea::placeholder {
+    color: #858383;
+    font-size: 300;
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+.contact form input[type='submit'] {
+   width: 25%;
+   background-color: #655989;
+   color: #fff;
+   border: none;
+
+} 
+
+@media (max-width: 768px) {
+    .contact {
+        width: 80%;
+    }
+    
+}

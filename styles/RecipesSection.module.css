@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
+
+
+/* recipes section */
+
+.recipesSection {
+    padding: 1%;
+}
+
+.recipesSection h2 {
+    color: #de88a5;
+    margin: 50px auto 15px;
+    text-align: center;
+    font-size: 24px;
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+
+.recipesSection .row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+
+.row .item {
+    height: 510px;
+    width: 383px;
+}
+
+.row .item div:first-child {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.item img {
+    height: 100%;
+    width: 100%;
+}
+
+
+.item .title {
+    position: absolute;
+    background-color: #e5e5e5;
+    bottom: 0;
+    left: 0; 
+    right: 0;
+    text-align: center;
+    height: 30%;
+    opacity: .8;
+    display: none;
+}
+
+
+
+.layerContainer:hover > .title {
+   display: block;  
+   animation: slideUp linear 1s ;
+   
+}
+
+
+
+.title h4 {
+    color: #a56f81
+}
+
+@keyframes slideUp {
+    0% {
+        bottom: -5%;
+    }
+
+    50% {
+        bottom: -2%;
+    }
+
+    100% {
+        bottom: 0;
+    }
+}
+
+
+@media (max-width: 900px){
+    .row .item {
+        height: 300px;
+    }
+}
+
+@media  (max-width: 576px) {
+    .recipesSection .row {
+        flex-direction: column;
+        margin: 0 3%;
+    }
+    
+}
+
+@media (max-width: 375px) {
+
+    .recipesSection .row .item {
+        width: 100%;
+    }
+    
+}
+
+.recipesSection button {
+    background-color: #655989;
+    border: none;
+    border-radius: 3%;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    width: 60%;
+    margin: 10% auto;
+    display: block;
+    padding: 12px;
+    font-weight: 700;
+}
+
+

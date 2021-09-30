@@ -1,0 +1,29 @@
+.main hr {
+    margin-bottom: 15%;
+    border: rgb(253, 155, 155) 0.6px solid;
+}
+
+.main label {
+   margin-bottom: 4%;
+}
+
+.preview {
+    height: 300px;
+    width: 100%;
+    margin: 3% auto 7%;
+    position: relative;
+}
+
+@media (min-width: 630px) and (max-width: 899px) {
+    .preview {
+        height: 500px
+    }
+}
+
+@media (max-width: 375px) {
+
+    .preview {
+        height: 200px;
+    }
+    
+}

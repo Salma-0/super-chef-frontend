@@ -1,0 +1,123 @@
+.loginSection {
+    background-color: #f2f2f2;
+}
+
+.loginSection .card {
+    margin: 5% auto;
+    width: 70%;
+    height: 612px;
+    display: flex;
+}
+
+.loginSection .card .leftContainer {
+    position: relative;
+    width: 50%;
+    height: 100%;
+
+}
+
+.formContainer {
+    width: 50%;
+    text-align: center;
+    background-color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    padding: 5% 2%;
+}
+
+
+
+.formContainer h3 {
+    font-size: 30px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    margin-bottom: 35px;
+}
+
+.formContainer input[type='email'], .formContainer input[type='password'], .formContainer input[type='text'] {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #000;
+    padding: 10px 12px;
+    font-size: 16px;
+    width: 70%;
+    margin-bottom: 15px;
+}
+
+.formContainer input::placeholder {
+    color: #a09e9e;
+}
+
+.formContainer label {
+    margin-bottom: 15px;
+}
+
+.formContainer button.login {
+    background-color: #655989;
+    border: none;
+    color: #fff;
+    padding: 15px 30px;
+    width: 70%;
+    border-radius: 30px;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 20px;
+}
+
+.formContainer a {
+    display: block;
+    font-weight: 700;
+    margin-top: 15px;
+    letter-spacing: 1px;
+}
+
+.formContainer a:last-child {
+    margin-bottom: 25px;
+}
+
+@media (max-width: 900px) {
+    .loginSection .card {
+        flex-direction: column;
+        height: 850px;
+    }
+
+    .loginSection .card.signup {
+        height: 900px;
+    }
+
+    .loginSection .card .leftContainer{
+        width: 100%;
+        height: 50%;
+    }
+    .card .formContainer {
+        padding: 0 3%;
+        width: 100%;
+        height: 50%;
+    }
+}
+
+
+@media (max-width: 576px) {
+    .loginSection .card .leftContainer {
+        height: 40%;
+    }
+    
+    .loginSection .card {
+       
+        height: 680px;
+    }
+
+
+    .card .formContainer h3 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .card .formContainer input::placeholder, .card .formContainer, .card button {
+        font-size: 14px;
+    }
+    
+}
+
+
+

@@ -1,0 +1,221 @@
+
+.footer {
+  width: 100%;
+  height: 100px;
+  border-top: 1px solid #eaeaea;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+
+
+
+
+/* LowerSugar styles */
+
+.lowerSugar {
+  padding: 5%;
+  text-align: center;
+}
+
+.lowerSugar h2 {
+  /* font-size: 36px; */
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+
+.lowerSugar p {
+  text-align: center;
+  max-width: 562px;
+  display: block;
+  margin: auto;
+  margin-bottom: 30px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+}
+
+.imagesGrid {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 10px;;
+  flex-wrap: wrap;
+
+
+}
+
+.imagesGrid img {
+  height: 317px;
+  width: 373px;
+}
+
+
+/* New Ideas component */
+
+.newIdeas {
+  background-color: #f2f2f2;
+  text-align: center;
+  padding: 3% 16%;
+}
+
+
+.newIdeas h2 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  /* font-size: 36px; */
+}
+
+.newIdeas p {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.newIdeas .grid {
+  display: flex;
+  gap: 5%;
+  margin-bottom: 40px;
+}
+
+.newIdeas .grid .col {
+  text-align: left;
+}
+
+.newIdeas .grid .col h4 {
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+
+.newIdeas .grid .col p {
+  color: #808080;
+  font-style: italic;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 500;
+}
+
+
+@media (max-width: 768px) {
+  .newIdeas .grid {
+    flex-direction: column;
+  }
+}
+
+.readMore {
+   border: 2px solid #de88a5;
+   border-radius: 20px;
+   font-size: 16px;
+   padding: 10px 30px;
+   color: #808080;
+}
+
+@media (max-width: 375px) {
+  .newIdeas .grid .col h4{
+    font-size: 18px;
+  }
+}
+
+/* Tips component */
+
+.tips {
+  padding: 5%;
+}
+
+.tips .grid {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+
+}
+.tips .grid div{
+  height: 280px;
+  width: 292px;
+  border: solid 2px #de88a5;
+  padding: 0px 30px;
+}
+
+.tips .grid div h4 {
+  /* font-size: 24px; */
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+
+}
+
+.tips .grid div p {
+  font-family: 'Open Sans', sans-serif;
+}
+
+ .tips .grid img {
+  height: 280px;
+  width: 292px;
+ }
+
+ @media (max-width: 1024px) {
+   .tips .grid {
+     flex-direction: column;
+     margin: 0 20%;
+   }
+
+   .tips .grid img, .tips .grid div {
+     width: 100%;
+     height: 230px;
+   } 
+ }
+
+ @media (max-width: 375px) {
+   .tips .grid div h4 {
+     font-size: 18px;
+   }
+ }
+
+ /* Health Precious */
+
+ .healthPrecious {
+   display: flex;
+ }
+
+ .healthPrecious img {
+   height: 100%;
+   width: 50%;
+ }
+
+ .healthPrecious div {
+   background-color: #f2f2f2;
+   padding: 5%;
+  }
+
+  .healthPrecious h2 {
+    /* font-size: 36px; */
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+  }
+
+  .healthPrecious p {
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+
+  }
+
+  .healthPrecious .readMore {
+    margin-top: 30px;
+  }
+
+  @media (max-width: 768px) {
+    .healthPrecious {
+      flex-direction: column;
+    }
+
+    .healthPrecious img {
+      width: 100%;
+      height: 450px;
+    }
+
+  }
+
+

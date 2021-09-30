@@ -1,0 +1,19 @@
+.pagination {
+
+}
+
+.pagination a {
+    font-size: 14px;
+    padding: 3px 10px;
+}
+
+.pagination button {
+    background-color: transparent;
+    color: #655989;
+    border: none;
+}
+
+.activeLink {
+    text-decoration: underline;
+}
+

@@ -1,0 +1,62 @@
+.main {
+   padding: 5% 20%;
+   /* background-color: thistle; */
+}
+
+
+.userInfo {
+    
+}
+
+
+
+.userInfo .avatar {
+    position: relative;
+    height: 150px;
+    width: 150px;
+    margin: 0 auto 6%;
+}
+
+.userInfo .avatar .layer {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-color: #a55989;
+    border-radius: 50%;
+    display: none;
+}
+
+.userInfo .avatar:hover > .layer {
+    display: block;
+}
+
+.avatar .layer button {
+    position: absolute;
+    top: 40%;
+    left: 38%;
+    font-size: 24px;
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    
+}
+
+.userInfo .name {
+    text-align: center;
+    color: #a55989;
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+.userInfo form {
+    margin: 10% auto;
+    
+}
+
+
+@media (max-width: 576px) {
+    .main {
+        padding: 5% 10%
+    }
+}
+
