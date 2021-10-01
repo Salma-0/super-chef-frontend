@@ -12,7 +12,7 @@ interface Props {
 function Header({}: Props): ReactElement {
 
 
-    const {user, logout} = useContext(AuthContext)
+    const {user, logout}:any = useContext(AuthContext)
     const [showSmallNav, setShowSmallNav] = useState(false)
 
     const toggleNav = () => setShowSmallNav(!showSmallNav)
