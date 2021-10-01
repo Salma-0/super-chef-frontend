@@ -1,4 +1,4 @@
-import {useState, useRef, MouseEventHandler} from 'react'
+import {useState, useRef, ChangeEvent, FormEvent} from 'react'
 import styles from '@styles/Modal.module.css'
 import {FaUpload} from 'react-icons/fa'
 import Image from 'next/image'
@@ -9,10 +9,14 @@ interface Props {
 
  const ImageUpload = ({callback}: Props) => {
     const [image, setImage] = useState<any>(null)
-    const ref = useRef(null)
-    const handleChange = e => setImage(e.target.files[0])
+    const ref = useRef<HTMLInputElement>(null)
+    
+    const handleChange = (e: ChangeEvent<HTMLInputElement>):void => {
+        let file: File = (e.target.files as FileList)[0]
+        setImage(file)
+    }
 
-    const onSubmit = e => {
+    const onSubmit = (e: FormEvent<HTMLFormElement>) : void => {
         e.preventDefault()
 
         if(!image) return ;
