@@ -183,11 +183,11 @@
 
  .healthPrecious .image {
    height: 100%;
-   width: 150%;
+   width: 50%;
    position: relative;
  }
 
- .healthPrecious div:not(.image) {
+ .healthPrecious div.text {
    background-color: #f2f2f2;
    padding: 5%;
   }

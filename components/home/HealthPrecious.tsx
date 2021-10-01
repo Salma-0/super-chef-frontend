@@ -14,7 +14,7 @@ function HealthPrecious({}: Props): ReactElement {
            <div className={styles.image}>
                <Image src='/health.jpeg' alt='' layout='fill'/>
            </div>
-            <div>
+            <div className={styles.text}>
                 <h2>Health is the most precious</h2>
                 <p>
                 While it is important to have naturally occurring sugars in your diet, many foods contain harmful added sugars that contain no nutritional value. 
