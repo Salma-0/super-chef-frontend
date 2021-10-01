@@ -4,19 +4,19 @@ import axios from 'axios'
 
 
 
-const API_URL = process.env.API_URL + '/auth';
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export default async function login(req: NextApiRequest, res: NextApiResponse){
-
+    
     try {
-        const response = await axios.post(API_URL, req.body, {
+        const response = await axios.post(API_URL+'/auth', req.body, {
             headers: {
                 'Content-Type': 'application/json'
             }
         })
 
 
-        const userRes = await axios.get(process.env.API_URL+'/users', {
+        const userRes = await axios.get(API_URL+'/users', {
             headers: {
                 'x-auth-token': response.data
             }

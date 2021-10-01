@@ -2,7 +2,7 @@ import axios from 'axios'
 import {NextApiRequest, NextApiResponse} from 'next'
 import cookie from 'cookie'
 
-const API_URL = process.env.API_URL
+const API_URL = process.env.NEXT_PUBLIC_API_URL
 
 export default async function signup(req: NextApiRequest, res: NextApiResponse){
     try {

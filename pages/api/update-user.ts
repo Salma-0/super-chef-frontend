@@ -3,7 +3,7 @@ import {NextApiRequest, NextApiResponse} from 'next'
 import User from 'types/User'
 import axios from 'axios'
 
-const API_URL = process.env.API_URL + '/users'
+const API_URL = process.env.NEXT_PUBLIC_API_URL + '/users'
 
 export default async function updateUser(req: NextApiRequest, res: NextApiResponse<User>){
     try {
@@ -21,7 +21,7 @@ export default async function updateUser(req: NextApiRequest, res: NextApiRespon
             }
         })
 
-        console.log('updatedUser', response.data)
+        //console.log('updatedUser', response.data)
 
         res.setHeader('Set-Cookie', cookie.serialize('auth', JSON.stringify({user: response.data, token: authObj.token}), {
             httpOnly: true,

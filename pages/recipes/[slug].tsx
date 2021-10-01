@@ -6,16 +6,25 @@ import User from '@components/recipe/User'
 import 'react-tabs/style/react-tabs.css'
 import {Tab, Tabs, TabList, TabPanel} from 'react-tabs'
 import RecipeType from '../../types/Recipe'
+import { GetServerSidePropsContext } from 'next'
+import Error from 'next/error'
+import {API_URL} from 'config/index'
+import axios from 'axios'
 
 interface Props {
-  recipe: RecipeType
+  recipe: RecipeType,
+  errorCode?: number
 }
 
 const tabStyle = {
   width: '50%'
 }
 
-function RecipePage({recipe}: Props): ReactElement {
+function RecipePage({recipe, errorCode}: Props): ReactElement {
+  
+  if(errorCode){
+    return <Error statusCode={errorCode}/>
+  }
   
     return (
         <Layout title={recipe.name}>
@@ -76,23 +85,18 @@ function RecipePage({recipe}: Props): ReactElement {
 
 export default  RecipePage
 
-export async function getServerSideProps({params}){
+export async function getServerSideProps({params}: GetServerSidePropsContext){
   try {
-    console.log(params.slug)
-    const res = await fetch(process.env.API_URL + '/recipes/'+params.slug)
-    const json = await res.json()
+    const recipeRes = await axios.get(`${API_URL}/recipes/${params.slug}`)
 
     return {
       props: {
-        recipe: json
+        recipe: recipeRes.data
       }
     }
   } catch (err) {
-    console.error(err)
     return {
-      props: {
-        notFound: true
-      }
+      props: { errorCode: err.response?.status || 500 }
     }
   }
 }

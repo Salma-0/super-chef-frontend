@@ -1,9 +1,11 @@
 import axios from 'axios'
 import cookie from 'cookie'
 import {NextApiRequest, NextApiResponse} from 'next'
-const API_URL = process.env.API_URL + '/users'
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL + '/users'
 
 export default async function getUser(req: NextApiRequest, res: NextApiResponse){
+    
     try {
         if(!req.headers.cookie){
             return res.status(403).json({errors: [{msg: 'Not Authorized'}]})
