@@ -1,5 +1,5 @@
 import {useEffect, useState, useContext} from 'react'
-import {NextPage} from 'next'
+import {GetServerSidePropsContext, NextPage} from 'next'
 import Layout from '@components/Layout'
 import axios from 'axios'
 import UserType from 'types/User'
@@ -16,6 +16,7 @@ import AuthContext from 'context/AuthContext'
 import RecipesSection from '@components/profile/RecipesSection'
 import { API_URL } from '@config/index'
 import RecipeType from 'types/Recipe'
+
 
 
 
@@ -58,7 +59,7 @@ const Dashboard: NextPage<Props> = ({user, token, recipes})=>{
 
     const onSubmit = e => {
         e.preventDefault()
-        axios.put('http://localhost:3000/api/update-user', formData, {
+        axios.put(`${process.env.NEXT_PUBLIC_FRONT_URL}/api/update-user`, formData, {
             headers: {'Content-Type': 'application/json'}
         }).then(res => {
             toast.success('Your Profile has been updated')
@@ -72,13 +73,13 @@ const Dashboard: NextPage<Props> = ({user, token, recipes})=>{
     const onUpload = (file) => {
         const data = new FormData()
         data.append('image', file)
-        axios.put('http://localhost:5000/api/users/upload', data, {
+        axios.put(`${API_URL}/users/upload`, data, {
             headers: {
                 'x-auth-token': token
             }
         })
         .then(res => {
-           axios.get('/api/user')
+           axios.get(`${process.env.NEXT_PUBLIC_FRONT_URL}/api/user`)
            .then(usr => {setShowModal(false), router.reload()})
            .catch(e => {throw e})
         }).catch(err => {
@@ -140,7 +141,7 @@ const Dashboard: NextPage<Props> = ({user, token, recipes})=>{
     }
 
 
-export async function getServerSideProps({ req }) {
+export async function getServerSideProps({ req }: GetServerSidePropsContext) {
     try {
         const {auth} = parseCookie(req)
         const json = JSON.parse(auth)

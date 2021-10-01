@@ -3,7 +3,7 @@ import {useRouter} from 'next/router'
 import axios from 'axios'
 import IUser from 'types/User'
 
-
+const url = process.env.NEXT_PUBLIC_FRONT_URL
 // 1. create context
 const AuthContext = createContext()
 
@@ -19,7 +19,7 @@ export const AuthProvider = ({children}) => {
     //check if user is logged
 
     const checkUserLoggedIn = () => {
-        axios.get('/api/user')
+        axios.get(`${url}/api/user`)
         .then(res => {
             setUser(res.data)
         }).catch(err => {
@@ -39,7 +39,7 @@ export const AuthProvider = ({children}) => {
    //login
 
    const login = (usr) => {
-       axios.post('/api/login', usr)
+       axios.post(`${url}/api/login`, usr)
        .then(res => {
            router.push('/dashboard')
            
@@ -53,7 +53,7 @@ export const AuthProvider = ({children}) => {
    }
 
    const logout = () => {
-       axios.get('/api/logout')
+       axios.get(`${url}/api/logout`)
        .then(() => {
            setUser(null)
            if(router.pathname === '/dashboard'){
@@ -67,7 +67,7 @@ export const AuthProvider = ({children}) => {
    }
 
    const register = (body) => {
-       axios.post('/api/register', body)
+       axios.post(`${url}/api/register`, body)
        .then(() => {
            router.push('/dashboard')
        }).catch(err => {
