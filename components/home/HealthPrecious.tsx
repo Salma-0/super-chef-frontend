@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react'
 import styles from '@styles/Home.module.css'
-import Link from 'next/link'
+//import Link from 'next/link'
+import Image from 'next/image'
 
 interface Props {
     
@@ -9,7 +10,10 @@ interface Props {
 function HealthPrecious({}: Props): ReactElement {
     return (
         <div className={styles.healthPrecious}>
-            <img src="/health.jpeg" alt="" />
+           {/* { <img src="/health.jpeg" alt="" />} */}
+           <div className={styles.image}>
+               <Image src='/health.jpeg' alt='' layout='fill'/>
+           </div>
             <div>
                 <h2>Health is the most precious</h2>
                 <p>

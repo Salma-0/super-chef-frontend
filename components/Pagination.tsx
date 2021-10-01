@@ -3,7 +3,6 @@ import styles from '@styles/Pagination.module.css'
 import Link from 'next/link'
 import {useRouter} from 'next/router'
 import getURL from '@helpers/getURL'
-import { route } from 'next/dist/server/router'
 
 interface Props {
     page: number,

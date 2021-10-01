@@ -21,18 +21,20 @@ interface Props {
 }
 
 function Edit({category, token, errorCode}: Props): ReactElement {
+    const router = useRouter()
+
+    const [showModal, setShowModal] = useState<boolean>(false)
+    const [formData, setFormData] = useState({...category, image: category.image._id}) 
 
     if(errorCode) {
         return <Error statusCode={errorCode}/>
     }
-    const router = useRouter()
     
-    const [showModal, setShowModal] = useState<boolean>(false)
-    const [formData, setFormData] = useState({...category, image: category.image._id}) 
+    
     
     const onChange = (ev: ChangeEvent<HTMLInputElement>)=> setFormData({...formData, [ev.target.name]: ev.target.value})
 
-    const updateCategory = (body): Promise<void> => {
+    const updateCategory = (body: {name: string, image: string}): Promise<void> => {
         return axios.put(`${API_URL}/categories/${category._id}`, body, {
             headers: {'x-auth-token': token}
         }).then(res => {
@@ -116,7 +118,7 @@ export async function getServerSideProps({req, params}: GetServerSidePropsContex
             }
         }
 
-        const {id} = params 
+        const id = params?.id
         
         const res = await axios.get(`${API_URL}/categories/${id}`)
         
@@ -126,7 +128,7 @@ export async function getServerSideProps({req, params}: GetServerSidePropsContex
                 token
             }
         }
-    } catch (err) {
+    } catch (err: any) {
         const code = err.response?.status || 500
         return {
             props: {

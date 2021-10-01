@@ -28,10 +28,10 @@ const ProfilePage = ({errorCode, user, recipes}: Props) => {
                 <div className={styles.card}>
                     <div className={styles.name}>
                         <div className={styles.imgContainer}>
-                            <Image src={user.avatar?.images[0].url || '/default-avatar.png'} alt="" layout='fill' />
+                            <Image src={(typeof user.avatar === 'string' || !user.avatar) ? '/default-avatar.png' : user.avatar.images[0].url} alt='' layout='fill' className='rounded' />
                         </div>
 
-                        <h2>I'm {user.name}</h2>
+                        <h2>I&apos;m {user.name}</h2>
                     </div>
                     <div className={styles.text}>
                         <button className={styles.edit}><FaEdit /></button>
@@ -71,7 +71,7 @@ export const getServerSideProps : GetServerSideProps = async (context) => {
                 recipes: res.data.recipes
             }
         }
-    } catch (err) {
+    } catch (err: any) {
         console.log(err)
         return {
             props: {

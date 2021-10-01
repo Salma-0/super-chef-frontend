@@ -14,6 +14,8 @@ interface Props {
     title: string
 }
 
+
+
 export default function  Layout({children,  title='Super Chef', keywords='recipes, cusine, food, dessert, cooking, chef', description='deliciouse recipes'}: Props){
     return (
        <div className={styles.container}>
@@ -33,7 +35,7 @@ export default function  Layout({children,  title='Super Chef', keywords='recipe
 }
 
 
-Layout.defaultValues = {
+Layout.defaultProps = {
     title: 'SuperChef',
     keywords:'recipes, cusine, food, dessert, cooking, chef',
     description:'deliciouse recipes'

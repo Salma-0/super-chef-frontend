@@ -11,7 +11,7 @@ interface Props {
 }
 
 function RecipeItem({recipe}: Props) {
-    const {user} = useContext(AuthContext)
+    const {user}:any = useContext(AuthContext)
 
     return (
         <div className={styles.item}>

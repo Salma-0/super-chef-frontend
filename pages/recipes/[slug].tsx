@@ -87,14 +87,15 @@ export default  RecipePage
 
 export async function getServerSideProps({params}: GetServerSidePropsContext){
   try {
-    const recipeRes = await axios.get(`${API_URL}/recipes/${params.slug}`)
+    const slug = params?.slug
+    const recipeRes = await axios.get(`${API_URL}/recipes/${slug}`)
 
     return {
       props: {
         recipe: recipeRes.data
       }
     }
-  } catch (err) {
+  } catch (err: any) {
     return {
       props: { errorCode: err.response?.status || 500 }
     }

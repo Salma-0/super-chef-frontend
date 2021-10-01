@@ -23,16 +23,15 @@ interface Props {
 
 }
 
-// TODO: add search by keywords
 
 
 export default function Recipes({categories, recipes, page, total, errorCode}: Props): ReactElement {
 
+    const router = useRouter()
+
     if(errorCode){
         return <Error statusCode={errorCode} />
     }
-
-    const router = useRouter()
 
     const onSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
         const keyword = event.target.value;
@@ -74,52 +73,23 @@ export default function Recipes({categories, recipes, page, total, errorCode}: P
 
 
 
-export async function getServerSideProps({query}: GetServerSidePropsContext){
-//    try {
-       
-//        const res = await fetch(`${process.env.API_URL}/categories?limit=10&page=1`)
+export async function getServerSideProps({ query }: GetServerSidePropsContext) {
+    try {
+        const categoriesRes = await axios.get(`${API_URL}/categories?page=1&limit=10`)
+        const url = `${API_URL}/recipes${getURL(query)}`
+        const recipesRes = await axios.get(url)
 
-       
-//        const json = await res.json()
-
-
-//        const url = process.env.API_URL + '/recipes' + getURL(query)
-
-//        const recipesRes = await fetch(url)
-//        const recipesJSON = await recipesRes.json()
-
-
-//        return {
-//            props: {
-//                categories: json.categories,
-//                recipes: recipesJSON.recipes,
-//                page: recipesJSON.page,
-//                total: recipesJSON.total
-//            }
-//        }
-//    } catch (err: any) {
-//        console.log(err)
-//        return {
-//            props: {code: err.code, status: err.status, message: err.message}
-//        }
-//    }
-
-try {
-    const categoriesRes = await axios.get(`${API_URL}/categories?page=1&limit=10`)
-    const url = `${API_URL}/recipes${getURL(query)}`
-    const recipesRes = await axios.get(url)
-
-    return {
-        props: {
-            categories: categoriesRes.data.categories,
-            recipes: recipesRes.data.recipes,
-            page: recipesRes.data.page,
-            total: recipesRes.data.total
+        return {
+            props: {
+                categories: categoriesRes.data.categories,
+                recipes: recipesRes.data.recipes,
+                page: recipesRes.data.page,
+                total: recipesRes.data.total
+            }
+        }
+    } catch (err: any) {
+        return {
+            props: { errorCode: err.response?.status || 500 }
         }
     }
-} catch (err) {
-    return {
-        props: {errorCode: err.response?.status || 500}
-    }
-}
 }

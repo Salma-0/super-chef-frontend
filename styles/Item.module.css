@@ -2,15 +2,18 @@
     display: flex;
     width: 565px;
     box-shadow: 2px 0.2em 2.5em #c4c4c4;
+    height: 300px
 }
 
-.item img {
+.item .imageWrapper {
    width: 50%;
+   position: relative;
 }
 
-.item div {
+.item div.text {
   background-color: #fff;
   padding: 10px 20px;
+  width: 50%;
 }
 
 .item h4 {
@@ -49,7 +52,7 @@
         height: unset;
     }
 
-    .item div, .item img {
+    .item div.text, .item .imageWrapper {
         width: 100%;
         height: 220px;
     }

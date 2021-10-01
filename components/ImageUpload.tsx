@@ -27,11 +27,12 @@ interface Props {
     const onClick = () : void => ref.current?.click()
     return (
         <form className={styles.imageUpload} onSubmit={onSubmit}>
-            {image &&
+            {/* {image &&
             <div className={styles.preview}>
                 <img src={URL.createObjectURL(image)} alt='' width='150' height='130'/>
-            </div>
+            </div> */
             }
+            
            
             <input ref={ref} type="file" onChange={handleChange}/>
             <div className={styles.customInput} onClick={onClick}>

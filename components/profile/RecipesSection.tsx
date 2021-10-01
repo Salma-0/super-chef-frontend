@@ -1,10 +1,11 @@
-import React, { ReactElement } from 'react'
+import React, { ReactElement, ReactChild, ReactChildren } from 'react'
 import RecipeItem from './RecipeItem'
 import RecipeType from 'types/Recipe'
 import styles from '@styles/RecipesSection.module.css'
 
 interface Props {
-  recipes: Array<RecipeType>    
+  recipes: Array<RecipeType> ,
+  children?: ReactChild | ReactChildren 
 }
 
 function RecipesSection({ recipes, children }: Props): ReactElement {

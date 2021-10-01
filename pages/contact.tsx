@@ -10,7 +10,7 @@ interface Props {
     
 }
 
-function contact({}: Props): ReactElement {
+function Contact({}: Props): ReactElement {
 
     const [formData, setFormData] = useState({name: '', email: '', message: ''})
 
@@ -45,4 +45,4 @@ function contact({}: Props): ReactElement {
     )
 }
 
-export default contact
+export default Contact

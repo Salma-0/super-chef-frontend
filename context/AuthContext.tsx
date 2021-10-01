@@ -1,16 +1,20 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, ReactChild, ReactChildren } from "react";
 import {useRouter} from 'next/router'
 import axios from 'axios'
 import IUser from 'types/User'
 
 const url = process.env.NEXT_PUBLIC_FRONT_URL
 // 1. create context
-const AuthContext = createContext()
+const AuthContext = createContext<any>({})
+
+interface IProps {
+   children: ReactChild | ReactChildren
+}
 
 
 // 2. create provider
 
-export const AuthProvider = ({children}) => {
+export const AuthProvider = ({children}: IProps) => {
     const [user, setUser] = useState<IUser | null>(null)
     const [error, setError] = useState<string | null>(null)
 
@@ -38,7 +42,7 @@ export const AuthProvider = ({children}) => {
 
    //login
 
-   const login = (usr) => {
+   const login = (usr: {email: string, password: string}) => {
        axios.post(`${url}/api/login`, usr)
        .then(res => {
            router.push('/dashboard')
@@ -66,7 +70,7 @@ export const AuthProvider = ({children}) => {
        })
    }
 
-   const register = (body) => {
+   const register = (body: {email: string, name: string, password: string, passwordConfirm: string}) => {
        axios.post(`${url}/api/register`, body)
        .then(() => {
            router.push('/dashboard')

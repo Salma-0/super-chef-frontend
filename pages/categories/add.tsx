@@ -11,6 +11,7 @@ import {ToastContainer, toast} from 'react-toastify'
 import {useRouter} from 'next/router'
 import IImage from 'types/Image'
 import Image from 'next/image'
+import { GetServerSidePropsContext } from 'next'
 
 interface Props {
     token?: string,
@@ -18,24 +19,15 @@ interface Props {
 }
 
 function Add({token, errorCode}: Props): ReactElement {
-    
-    if(errorCode){
-        return <Error statusCode={errorCode}/>
-    }
-
-   
-
     const router = useRouter()
 
     const [formData, setFormData] = useState({
         name: '',
         image: ''
     });
+
     const [showModal, setShowModal] = useState<boolean>(false)
     const [preview, setPreview] = useState<IImage | null>(null)
-   
-    const onChange = (ev: ChangeEvent<HTMLInputElement>) => setFormData({...formData, [ev.target.name]: ev.target.value})
-
 
     useEffect(()=> {
         let imageStr = localStorage.getItem('tmpImage')
@@ -45,6 +37,19 @@ function Add({token, errorCode}: Props): ReactElement {
             setFormData({...formData, image: image._id})
         }
     }, [])
+
+    if(errorCode){
+        return <Error statusCode={errorCode}/>
+    }
+
+
+   
+    
+   
+    const onChange = (ev: ChangeEvent<HTMLInputElement>) => setFormData({...formData, [ev.target.name]: ev.target.value})
+
+
+   
 
     const onSubmit = (ev: FormEvent<HTMLFormElement>) => {
         ev.preventDefault()
@@ -112,7 +117,7 @@ function Add({token, errorCode}: Props): ReactElement {
 export default Add
 
 
-export function getServerSideProps({req}) {
+export function getServerSideProps({req}: GetServerSidePropsContext) {
     try {
        const {auth} = parseCookies(req)
        if(!auth){

@@ -10,10 +10,11 @@ interface Props {
 }
 
 function User({user}: Props): ReactElement {
+    const avatarSrc = typeof user.avatar === 'string' || !user.avatar ? '/default-avatar.png' : user.avatar.images[0].url
     return (
         <div className={styles.user}>
             <div className={styles.row}>
-                <Image src={user.avatar?.images[0].url || '/default-avatar.png'} alt="" width={85} height={85}/>
+                <Image src={avatarSrc} alt="" width={85} height={85}/>
                 <div className={styles.info}>
                     <span><Link href={'/profiles/'+user.name}><a>{user.name}</a></Link></span>
                     {user.social && 

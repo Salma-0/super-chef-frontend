@@ -22,7 +22,7 @@ export default async function signup(req: NextApiRequest, res: NextApiResponse){
 
         return res.status(200).json(response.data)
        
-    } catch (err) {
+    } catch (err: any) {
         res.status(err.response.status).json(err.response.data)
     }
 }

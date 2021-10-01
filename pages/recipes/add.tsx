@@ -14,6 +14,7 @@ import {toast, ToastContainer} from 'react-toastify'
 import ImageType from 'types/Image'
 import Image from 'next/image'
 import router from 'next/router'
+import { GetServerSidePropsContext } from 'next'
 
 interface Props {
     errorCode?: number,
@@ -23,7 +24,7 @@ interface Props {
 
 
 
-function add({errorCode, categories, token}: Props): ReactElement {    
+function Add({errorCode, categories, token}: Props): ReactElement {    
 
     const [formData, setFormData] = useState({
         name: '',
@@ -37,7 +38,7 @@ function add({errorCode, categories, token}: Props): ReactElement {
         instructions: []
     });
 
-    const [preview, setPreview] = useState<ImageType | undefined>(undefined)
+    const [preview, setPreview] = useState<ImageType | null>(null)
 
 
     useEffect(() => {
@@ -102,7 +103,7 @@ function add({errorCode, categories, token}: Props): ReactElement {
                     <h2>New Recipe</h2>
                     <hr />
                     {
-                            preview && <div className={styles.preview}><Image src={preview.images[0].url} alt='' layout='fill'/></div>
+                      preview ? <div className={styles.preview}><Image src={preview.images[0].url} alt='' layout='fill'/></div> : <div></div>
                     }
                     <ToastContainer />
                     <form onSubmit={onSubmit}>
@@ -162,7 +163,7 @@ function add({errorCode, categories, token}: Props): ReactElement {
 }
 
 
-export async function getServerSideProps({req}){
+export async function getServerSideProps({req}: GetServerSidePropsContext){
     try {
         const {auth} = parseCookie(req)
         if(!auth){
@@ -198,4 +199,4 @@ export async function getServerSideProps({req}){
     }
 }
 
-export default add
+export default Add

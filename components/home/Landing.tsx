@@ -19,21 +19,21 @@ function Landing({}: Props): ReactElement {
             </div>
             <div className={styles.row}>
                 <div className={styles.box}>
-                    <img src='/apple-sider.png' alt=''/>
+                    <Image width={64} height={64} src='/apple-sider.png' alt=''/>
                     <h4>Drink apple cider vingar</h4>
                     <p>
                     According to Sepel, adding one or two tablespoons of apple cider vinegar to a large bottle of water
                     </p>
                 </div>
                 <div className={styles.box}>
-                    <img src='/meal.png' alt=''/>
+                    <Image width={64} height={64} src='/meal.png' alt=''/>
                     <h4>Keep to regular mealtime</h4>
                     <p>
                     This may seem like an obvious suggestion, but eating your meals at regular, spaced out intervals
                     </p>
                 </div>
                 <div className={styles.box}>
-                    <img src='/food.png' alt=''/>
+                    <Image width={64} height={64} src='/food.png' alt=''/>
                     <h4>Eat fruit in the morning</h4>
                     <p>
                     We’re told that we should eat five portions of fruits and vegetables a day in an effort to maintain a healthy lifestyle.

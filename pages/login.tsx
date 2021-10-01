@@ -3,7 +3,7 @@ import Layout from '@components/Layout'
 import styles from '@styles/Login.module.css'
 import Link from 'next/link'
 import Image from 'next/image'
-import {useState, useContext, useEffect} from 'react'
+import {useState, useContext, useEffect, ChangeEvent, FormEvent} from 'react'
 import AuthContext from 'context/AuthContext'
 import {toast, ToastContainer} from 'react-toastify'
 
@@ -19,9 +19,9 @@ export default function LoginPage({}: Props){
 
     const {email, password} = formData
 
-    const onChange = e => setFormData({...formData, [e.target.name]: e.target.value})
+    const onChange = (e: ChangeEvent<HTMLInputElement>) => setFormData({...formData, [e.target.name]: e.target.value})
 
-    const onSubmit = e => {
+    const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         login(formData)
     }
@@ -55,7 +55,7 @@ export default function LoginPage({}: Props){
 
 
                             <Link href="/signup">
-                                <a>Don't have an account?</a>
+                                <a>Don&apos;t have an account?</a>
                             </Link>
 
                             <Link href=''>

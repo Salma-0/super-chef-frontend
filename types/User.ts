@@ -1,17 +1,19 @@
 import Image from './Image'
 
-interface Social {
+export interface Social {
     facebook: string,
     instagram: string,
     twitter: string
 }
 
 export default interface User {
-    _id?: string,
+    _id: string,
     name: string,
-    email?: string,
-    avatar?: Image,
-    description?: string,
-    bio?: string,
-    social?: Social
+    email: string,
+    avatar: Image | string | null,
+    description: string,
+    bio: string,
+    social: Social
 }
+
+

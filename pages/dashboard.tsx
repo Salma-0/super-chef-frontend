@@ -1,4 +1,4 @@
-import {useEffect, useState, useContext} from 'react'
+import {useEffect, useState, useContext, FormEvent, ChangeEvent} from 'react'
 import {GetServerSidePropsContext, NextPage} from 'next'
 import Layout from '@components/Layout'
 import axios from 'axios'
@@ -18,8 +18,6 @@ import { API_URL } from '@config/index'
 import RecipeType from 'types/Recipe'
 
 
-
-
 interface Props {
    user: UserType,
    token: string,
@@ -27,11 +25,13 @@ interface Props {
 
 }
 
+
+
 const Dashboard: NextPage<Props> = ({user, token, recipes})=>{
 
     const router = useRouter()
-    const [formData, setFormData] = useState({
-      ...user
+    const [formData, setFormData] = useState<UserType>({
+        ...user
     })
 
     const {setUser} = useContext(AuthContext)
@@ -40,15 +40,15 @@ const Dashboard: NextPage<Props> = ({user, token, recipes})=>{
        setUser(user)
     }, [])
 
-    const [showModal, setShowModal] = useState(false)
+    const [showModal, setShowModal] = useState<boolean>(false)
 
-    const onChange = e => {
+    const onChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         let name = e.target.name;
         
         if(name.includes('.')){
-            let outer = name.split('.')[0]
-            let inner = name.split('.')[1]
-            let outerObj = formData[outer]
+            let outer : string = name.split('.')[0]
+            let inner : string = name.split('.')[1]
+            let outerObj:any = formData.social
             setFormData({...formData, [outer]: {...outerObj, [inner]: e.target.value}})
         }else{
             setFormData({...formData, [name]: e.target.value})
@@ -57,7 +57,7 @@ const Dashboard: NextPage<Props> = ({user, token, recipes})=>{
 
    
 
-    const onSubmit = e => {
+    const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         axios.put(`${process.env.NEXT_PUBLIC_FRONT_URL}/api/update-user`, formData, {
             headers: {'Content-Type': 'application/json'}
@@ -70,7 +70,7 @@ const Dashboard: NextPage<Props> = ({user, token, recipes})=>{
         })
     }
 
-    const onUpload = (file) => {
+    const onUpload = (file: File) => {
         const data = new FormData()
         data.append('image', file)
         axios.put(`${API_URL}/users/upload`, data, {
@@ -95,7 +95,7 @@ const Dashboard: NextPage<Props> = ({user, token, recipes})=>{
                <section className={styles.main}>
                    <div className={styles.userInfo}>
                        <div className={styles.avatar}>
-                           <Image src={user.avatar?.images[0].url || '/default-avatar.png'} alt='' layout='fill' className='rounded' />
+                           <Image src={(typeof user.avatar === 'string' || !user.avatar) ? '/default-avatar.png' : user.avatar.images[0].url} alt='' layout='fill' className='rounded' />
                            <div className={styles.layer}>
                                <button type='button' onClick={e => setShowModal(true)}><FaImage /></button>
                            </div>
@@ -110,7 +110,7 @@ const Dashboard: NextPage<Props> = ({user, token, recipes})=>{
                                </div>
                                <div className='form-group'>
                                    <label htmlFor="description">Description</label>
-                                   <textarea className='form-control' value={formData.description} onChange={onChange} name="description" id="description" rows="5"></textarea>
+                                   <textarea className='form-control' value={formData.description} onChange={onChange} name="description" id="description" rows={5}></textarea>
                                </div>
                                <div className='form-group'>
                                    <label className='facebook' htmlFor="facebook"><FaFacebookF /></label>

@@ -14,6 +14,7 @@ import parseCookie from '@helpers/parseCookie'
 import Image from 'next/image'
 import Modal from '@components/Modal'
 import ImageUpload from '@components/ImageUpload'
+import { GetServerSidePropsContext } from 'next'
 
 interface IProps {
     errorCode?: number,
@@ -23,11 +24,6 @@ interface IProps {
 }
 
 function Edit({recipe, errorCode, categories, token}: IProps): ReactElement {
-
-    if(errorCode){
-        return <Error statusCode={errorCode}/>
-    }
-
     const formRef = useRef<HTMLFormElement>(null)
     const router = useRouter()
 
@@ -39,6 +35,14 @@ function Edit({recipe, errorCode, categories, token}: IProps): ReactElement {
     })
 
     const [showModal , setShowModal] = useState<boolean>(false)
+
+    if(errorCode){
+        return <Error statusCode={errorCode}/>
+    }
+
+   
+
+    
 
     const {name, tags, instructions, ingredients, description, time, quantity, image, category} = formData
 
@@ -140,9 +144,9 @@ function Edit({recipe, errorCode, categories, token}: IProps): ReactElement {
 
 export default Edit
 
-export async function getServerSideProps(context){
-    const {id} = context.params;
-    const {auth} = parseCookie(context.req)
+export async function getServerSideProps({params, req}: GetServerSidePropsContext){
+    const id = params?.id;
+    const {auth} = parseCookie(req)
     try {
         if(!auth) {
             return {
@@ -170,7 +174,7 @@ export async function getServerSideProps(context){
         return {
             props: {recipe: res.data, categories: cats.data.categories, token}
         }
-    } catch (err) {
+    } catch (err: any) {
         return {
             props: {
                 errorCode: err.response?.status || 500

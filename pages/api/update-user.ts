@@ -5,7 +5,7 @@ import axios from 'axios'
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL + '/users'
 
-export default async function updateUser(req: NextApiRequest, res: NextApiResponse<User>){
+export default async function updateUser(req: NextApiRequest, res: NextApiResponse){
     try {
         if(!req.headers.cookie){
             return res.status(403).json({errors: [{msg: 'Not Authorized'}]})
@@ -32,7 +32,7 @@ export default async function updateUser(req: NextApiRequest, res: NextApiRespon
         }))
 
         return res.status(200).json(response.data)
-    } catch (err) {
+    } catch (err: any) {
        // console.log(err.response.data)
         return res.status(err.response.status).json(err.response.data)
     }
