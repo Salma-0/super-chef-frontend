@@ -32,11 +32,21 @@
 
 }
 
-.icons .iconItem img {
+.icons .iconItem .iconWrapper {
+    margin: 0 auto;
     height: 70px;
     width: 70px;
+    position: relative;
 }
 
+
+.container p {
+    margin-top: 10%;
+    font-size: 16px;
+    text-align: left;
+    letter-spacing: .5px;
+    font-family: 'Open Sans', sans-serif;
+}
 
 @media (max-width: 768px){
     .container {
@@ -57,9 +67,6 @@
         width: 100%;
     }
 
-    .icons .iconItem img {
-        width: 70px;
-    }
 
 
 }
@@ -67,6 +74,20 @@
 @media (max-width: 375px) {
     .container .intro .img {
         width: 100%;
+    }
+
+    .container p, .tabs ul li {
+        font-size: 12px;
+    }
+
+
+    .icons .iconItem .iconWrapper {
+        height: 50px;
+        width: 50px;
+    }
+
+    .icons .iconItem {
+        font-size: 12px;
     }
 
     

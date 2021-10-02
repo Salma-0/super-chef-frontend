@@ -33,20 +33,23 @@ function RecipePage({recipe, errorCode}: Props): ReactElement {
                    <div className={styles.img}><Image layout='fill' src={recipe.image.images[0].url} alt="" /></div>
                    <div className={styles.icons}>
                        <div className={styles.iconItem}>
-                         <Image src='/stopwatch.png' alt='' width={70} height={70}/>
+                         <div className={styles.iconWrapper}><Image src='/stopwatch.png' alt='' layout='fill'/></div>
                          <div>{recipe.time}</div>
                        </div>
                        <div className={styles.iconItem}>
-                         <Image src='/group.png' alt='' width={70} height={70}/>
+                         <div className={styles.iconWrapper}><Image src='/group.png' alt='' layout='fill'/></div>
                          <div>{recipe.quantity}</div>
                        </div>
                        <div className={styles.iconItem}>
-                         <Image src='/dinner.png' alt='' width={70} height={70}/>
+                         <div className={styles.iconWrapper}><Image src='/dinner.png' alt='' layout='fill'/></div>
                          <div>{recipe.category.name}</div>
                        </div>
                    </div>
                 </div>
                 <User user={recipe.author}/>
+                <div>
+                  <p>{recipe.description}</p>
+                </div>
           <div className={styles.tabs}>
             <Tabs>
               <TabList>
