@@ -76,7 +76,7 @@
         width: 100%;
     }
 
-    .container p, .tabs ul li {
+    .container p, .tabs ul li, .tabs ol li {
         font-size: 12px;
     }
 
