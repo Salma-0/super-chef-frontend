@@ -69,6 +69,7 @@ function Add({errorCode, categories, token}: Props): ReactElement {
            setFormData({...formData, image: res.data._id})
            setPreview(res.data)
            localStorage.setItem('tmpImage', JSON.stringify(res.data))
+           setShowModal(false)
        }).catch(err => {
            console.log(err)
            toast.error(err.response?.data.errors[0].msg || 'an error occured')
@@ -106,14 +107,14 @@ function Add({errorCode, categories, token}: Props): ReactElement {
                       preview ? <div className={styles.preview}><Image src={preview.images[0].url} alt='' layout='fill'/></div> : <div></div>
                     }
                     <ToastContainer />
+                    <Modal onClose={setShowModal} show={showModal} title='Upload Recipe Image'>
+                            <ImageUpload callback={uploadCallback} />
+                    </Modal>
                     <form onSubmit={onSubmit}>
                         
                         <div>
                             <button onClick={e => setShowModal(true)} className='form-button' type='button'>Upload Image</button>
                         </div>
-                        <Modal onClose={setShowModal} show={showModal} title='Upload Recipe Image'>
-                            <ImageUpload callback={uploadCallback} />
-                        </Modal>
                         <div className='form-group'>
                             <label htmlFor="name">Title:</label>
                             <input id='name' onChange={onChange} value={name} type="text" name='name' required />
