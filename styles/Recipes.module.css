@@ -102,7 +102,7 @@
 .categories .cat {
     display: flex;
     flex-direction: column;
-    width: 100px;
+    width: 90px;
     text-align: center;
     
 }
