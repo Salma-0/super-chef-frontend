@@ -256,3 +256,9 @@ small {
 .text-white {
   color: #fff;
 }
+
+@import 'nprogress/nprogress.css';
+
+#nprogress .bar {
+  background-color: #de88a5
+}
