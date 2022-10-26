@@ -34,10 +34,11 @@ export default function Layout({ children, title = 'Super Chef', keywords = 'rec
 
                 {recipeData && (
                     <>
-                        <meta name="og:title" content={recipeData.title} />
-                        <meta name="og:description" content={recipeData.description} />
-                        <meta name="og:url" content={recipeData.url} />
-                        <meta name="og:image" content={recipeData.image} />
+                        <meta property="og:title" content={recipeData.title} />
+                        <meta property="og:description" content={recipeData.description} />
+                        <meta property="og:type" content='article' />
+                        <meta property="og:url" content={recipeData.url} />
+                        <meta property="og:image" content={recipeData.image} />
                     </>
                 )}
             </Head>
